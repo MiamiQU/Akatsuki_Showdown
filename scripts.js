@@ -1,6 +1,11 @@
 const cards = document.querySelectorAll('.memory-card');
 
-
+let score1 = 0;
+let score2 = 0;
+let isFirstCard = false;
+let first, second;
+let isBoardClosed = false;
+let player1Turn = true;
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
@@ -45,6 +50,7 @@ secondCard.removeEventListener('click', flipCard);
 // Reset the board
 resetBoard();
 }
+
 
 
 function unflipCards() {
