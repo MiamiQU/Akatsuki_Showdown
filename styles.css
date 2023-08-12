@@ -1,75 +1,83 @@
 /* Box model resets */
 * {
   padding: 0;
-  margin: 0; 
+  margin: 0;
   box-sizing: border-box;
-}
-
-/* Body styles */  
-body {
+  }
+  
+  
+  /* Body styles */
+  body {
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #040455;
+  background: #8b8181;
   overflow: hidden;
   font-family: 'Georgia';
-}
-
-/* Center and style header */
-header {
+  }
+  
+  
+  /* Center and style header */
+  header {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 640px;
-}
-
-header h1 {
+  }
+  
+  
+  header h1 {
   font-size: 30px;
-  color: white; 
-}
-
-header h2 {
+  color: rgb(228, 2, 2);
+  }
+  
+  
+  header h2 {
   font-size: 20px;
-  color: white;
-  margin-left: auto; 
-}
-
-/* Add space between header and game */
-.memory-game {
+  color: rgb(237, 1, 1);
+  margin-left: auto;
+  }
+  
+  
+  /* Add space between header and game */
+  .memory-game {
   width: 640px;
   height: 640px;
   margin-top: 20px;
-  
   /* Layout game cards */
   display: flex;
   flex-wrap: wrap;
-  
   /* 3D transform perspective */
   perspective: 1000px;
-}
-
-#player1, #player2{
+  }
+  
+  
+  #player1, #player2{
   font-size: 20px;
   margin-top 0;
   padding-left: 18.5px;
-}
-
-.first, .second{
+  }
+  
+  
+  .first, .second{
   display: flex;
   justify-content: center;
   flex-direction: column;
-}
-
-.first{
+  }
+  
+  
+  .first{
   margin-right: 10%;
-}
-
-.second{
+  }
+  
+  
+  .second{
   margin-right: 10%;
-}
-
-.memory-card {
+  }
+  
+  
+  .memory-card {
   width: calc(25% - 10px);
   height: calc(33.333% - 10px);
   margin: 5px;
@@ -78,19 +86,22 @@ header h2 {
   transform-style: preserve-3d;
   transition: transform .5s;
   box-shadow: 1px 1px 1px rgba(0,0,0,.3);
-}
-
-.memory-card:active {
+  }
+  
+  
+  .memory-card:active {
   transform: scale(0.97);
   transition: transform .2s;
-}
-
-.memory-card.flip {
+  }
+  
+  
+  .memory-card.flip {
   transform: rotateY(180deg);
-}
-
-.front-face,
-.back-face {
+  }
+  
+  
+  .front-face,
+  .back-face {
   width: 100%;
   height: 100%;
   padding: 20px;
@@ -98,8 +109,10 @@ header h2 {
   border-radius: 5px;
   background: #000000;
   backface-visibility: hidden;
-}
-
-.front-face {
+  }
+  
+  
+  .front-face {
   transform: rotateY(180deg);
-}
+  }
+  

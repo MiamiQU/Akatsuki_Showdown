@@ -1,84 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-  <title>Akatsuki Showdown</title>
 
-  <link rel="stylesheet" href="styles.css">
+<title>Akatsuki Showdown</title>
+
+
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>AKATSUKI SHOWDOWN</h1>
-        <main>
 
-          <div class="first">
-            <h2>Player1</h2>
-            <h2 id="player1">Score: 0</h2>
-          </div>
+  <div class="Memory">
+    <h2>Memory <span id="memoryID"></span></h2>
+    <button class="restartbutton" onClick="window.location.reload();">
+        Restart Game
+    </button>
+    <button class="exitbutton" onclick="window.open('', '_self', ''); window.close();">
+        Exit Game
+    </button>
 
-          <div class="second">
-            <h2>Player2</h2>
-            <h2 id="player2">Score: 0</h2>
-          </div>
-        </main>
-    </header>
-  <section class="memory-game">
-    <div class="memory-card" data-framework="yahiko">
-      <img class="front-face" src="img/Yahiko.jpeg" alt="Yahiko" />
-      <img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
-    </div>
-    <div class="memory-card" data-framework="yahiko">
-      <img class="front-face" src="img/Yahiko.jpeg" alt="Yahiko" />
-      <img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
-    </div>
+<header>
+<h1>AKATSUKI SHOWDOWN</h1>
+<main>
 
-    <div class="memory-card" data-framework="Zetsu">
-      <img class="front-face" src="img/Zetsu.jpeg" alt="Zetsu" />
-      <img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
-    </div>
-    <div class="memory-card" data-framework="Zetsu">
-      <img class="front-face" src="img/Zetsu.jpeg" alt="Zetsu" />
-      <img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
-    </div>
 
-    <div class="memory-card" data-framework="Konan">
-      <img class="front-face" src="img/Konan.jpeg" alt="Konan" />
-      <img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
-    </div>
-    <div class="memory-card" data-framework="Konan">
-      <img class="front-face" src="img/Konan.jpeg" alt="Konan" />
-      <img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
-    </div>
+<div class="first">
+<h2>Player1</h2>
+<h2 id="player1">Score: 0</h2>
+</div>
 
-    <div class="memory-card" data-framework="Itachi">
-      <img class="front-face" src="img/Itachi.jpg" alt="Itachi" />
-      <img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
-    </div>
-    <div class="memory-card" data-framework="Itachi">
-      <img class="front-face" src="img/Itachi.jpg" alt="Itachi" />
-      <img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
-    </div>
 
-    <div class="memory-card" data-framework="Obito">
-      <img class="front-face" src="img/Obito.jpeg" alt="Obito" />
-      <img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
-    </div>
-    <div class="memory-card" data-framework="Obito">
-      <img class="front-face" src="img/Obito.jpeg" alt="Obito" />
-      <img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
-    </div>
+<div class="second">
+<h2>Player2</h2>
+<h2 id="player2">Score: 0</h2>
+</div>
+</main>
+</header>
+<section class="memory-game">
+<div class="memory-card" data-framework="yahiko">
+<img class="front-face" src="img/Yahiko.jpeg" alt="Yahiko" />
+<img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
+</div>
+<div class="memory-card" data-framework="yahiko">
+<img class="front-face" src="img/Yahiko.jpeg" alt="Yahiko" />
+<img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
+</div>
 
-    <div class="memory-card" data-framework="Sasori">
-      <img class="front-face" src="img/Sasori.jpeg" alt="Sasori" />
-      <img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
-    </div>
-    <div class="memory-card" data-framework="Sasori">
-      <img class="front-face" src="img/Sasori.jpeg" alt="Sasori" />
-      <img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
-    </div>
-  </section>
 
-  <script src="scripts.js"></script>
+<div class="memory-card" data-framework="Zetsu">
+<img class="front-face" src="img/Zetsu.jpeg" alt="Zetsu" />
+<img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
+</div>
+<div class="memory-card" data-framework="Zetsu">
+<img class="front-face" src="img/Zetsu.jpeg" alt="Zetsu" />
+<img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
+</div>
+
+
+<div class="memory-card" data-framework="Konan">
+<img class="front-face" src="img/Konan.jpeg" alt="Konan" />
+<img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
+</div>
+<div class="memory-card" data-framework="Konan">
+<img class="front-face" src="img/Konan.jpeg" alt="Konan" />
+<img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
+</div>
+
+
+<div class="memory-card" data-framework="Itachi">
+<img class="front-face" src="img/Itachi.jpg" alt="Itachi" />
+<img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
+</div>
+<div class="memory-card" data-framework="Itachi">
+<img class="front-face" src="img/Itachi.jpg" alt="Itachi" />
+<img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
+</div>
+
+
+<div class="memory-card" data-framework="Obito">
+<img class="front-face" src="img/Obito.jpeg" alt="Obito" />
+<img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
+</div>
+<div class="memory-card" data-framework="Obito">
+<img class="front-face" src="img/Obito.jpeg" alt="Obito" />
+<img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
+</div>
+
+
+<div class="memory-card" data-framework="Sasori">
+<img class="front-face" src="img/Sasori.jpeg" alt="Sasori" />
+<img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
+</div>
+<div class="memory-card" data-framework="Sasori">
+<img class="front-face" src="img/Sasori.jpeg" alt="Sasori" />
+<img class="back-face" src="img/Akatsuki.jpeg" alt="Akatsuki" />
+</div>
+</section>
+
+
+<script src="scripts.js"></script>
 </body>
-</html>
