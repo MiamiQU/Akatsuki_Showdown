@@ -1,27 +1,77 @@
-// User Stories
-// As a user, I can click on a card to flip it over and reveal an Akatsuki character
-// As a user, I can click on a second card to try and find a matching Akatsuki character to the first card I flipped
-// As a user, if I flip two cards that match, those cards will be removed from the board
-// As a user, if I flip two cards that don't match, they will flip back over after a few seconds
-// As a user, I can take turns flipping cards with another player to find matches
-// As a user, when all matches have been found, I will see a congratulations message with my total number of matches
-// As a user, I can click a restart button to shuffle the cards and play again
-// As a user, I can select a difficulty level (easy, medium, hard) that starts with more or fewer pairs
-// As a user, I can view the total time it took me to finish the game
-// MVP Goals
-// Allow users to flip over two cards to reveal Akatsuki characters
-// Check if the two flipped cards match and keep them face up if they do
-// If cards don't match, flip them back over after a few seconds
+const tilesContainer = document.querySelector(".tiles");
+const colors = ["aqua", "aquamarine", "crimson", "blue", "dodgerblue", "gold", "greenyellow", "teal"];
+const colorsPicklist = [...colors, ...colors];
+const tileCount = colorsPicklist.length;
 
-body {
-    background: #333333;
-    margin: 0;
+// Game state
+let revealedCount = 0;
+let activeTile = null;
+let awaitingEndOfMove = false;
+
+function buildTile(color) {
+	const element = document.createElement("div");
+
+	element.classList.add("tile");
+	element.setAttribute("data-color", color);
+	element.setAttribute("data-revealed", "false");
+
+	element.addEventListener("click", () => {
+		const revealed = element.getAttribute("data-revealed");
+
+		if (
+			awaitingEndOfMove
+			|| revealed === "true"
+			|| element == activeTile
+		) {
+			return;
+		}
+
+		// Reveal this color
+		element.style.backgroundColor = color;
+
+		if (!activeTile) {
+			activeTile = element;
+
+			return;
+		}
+
+		const colorToMatch = activeTile.getAttribute("data-color");
+
+		if (colorToMatch === color) {
+			element.setAttribute("data-revealed", "true");
+			activeTile.setAttribute("data-revealed", "true");
+
+			activeTile = null;
+			awaitingEndOfMove = false;
+			revealedCount += 2;
+
+			if (revealedCount === tileCount) {
+				alert("You win! Refresh to start again.");
+			}
+
+			return;
+		}
+
+		awaitingEndOfMove = true;
+
+		setTimeout(() => {
+			activeTile.style.backgroundColor = null;
+			element.style.backgroundColor = null;
+
+			awaitingEndOfMove = false;
+			activeTile = null;
+		}, 1000);
+	});
+
+	return element;
 }
 
-.tiles {
-    margin: 48px auto;
-    width: max-SVGTextContentElement;
-    display: CanvasGradient;
-    grid-template-columns: PaymentRequestUpdateEvent(4, 100px);
-    gap: 16px; 
+// Build up tiles
+for (let i = 0; i < tileCount; i++) {
+	const randomIndex = Math.floor(Math.random() * colorsPicklist.length);
+	const color = colorsPicklist[randomIndex];
+	const tile = buildTile(color);
+
+	colorsPicklist.splice(randomIndex, 1);
+	tilesContainer.appendChild(tile);
 }
