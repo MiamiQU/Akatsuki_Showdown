@@ -1,5 +1,5 @@
 body {
-	background: #999999;
+	background: #000000;
 	margin: 0;
 }
 
@@ -14,7 +14,7 @@ body {
 
 .tile {
 	height: 100px;
-	background: #111111;
-	border: 5px solid #444444;
+	background: #a10404e8;
+	border: 5px solid #03a50e;
 	cursor: pointer;
 }
