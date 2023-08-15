@@ -1,192 +1,126 @@
 // Select all cards
 const cards = document.querySelectorAll('.memory-card');
+console.log("Selecting all cards");
 
-//Variables
+//Variables for players
 const player1 = {
   score: 0,
   name: 'Player 1'
 }
 
 const player2 = {
-  score: 0,
+  score: 0, 
   name: 'Player 2'
 }
+console.log("Created player objects");
 
-//default player turn on game start
-let currentPlayer = player1
+// Default starting player 
+let currentPlayer = player1;
+console.log("Starting player is Player 1");
 
-//Dom references for score and prompt
-const player1ScoreElement = document.getElementById('player1-score')
-const player2ScoreElement = document.getElementById('player2-score')
-const currentPlayerPrompt = document.getElementById('player-prompt')
+// DOM elements for score and prompt
+const player1ScoreElement = document.getElementById('player1-score');
+const player2ScoreElement = document.getElementById('player2-score');
+const currentPlayerPrompt = document.getElementById('player-prompt');
+console.log("Got DOM elements");
 
+// Track first clicked card
+let firstCard;
 
-// First clicked card
-let isFirstCard = false;
-let first, second;
+// Prevent further clicks if board locked
+let lockBoard = false; 
 
-
-// Prevent further clicks
-let isBoardClosed = false;
-
-
-// Track current player turn
-let player1Turn = true;
-
-
-// Card flip state
+// Track if card flipped  
 let hasFlippedCard = false;
-let lockBoard = false;
-let firstCard, secondCard;
-
 
 // Handle card click
-// Add flip class, track selected card
 function flipCard() {
+
   // Flip card
   this.flipped = true;
+  console.log("Flipped card");
+  
+  // Check for lock
+  if (lockBoard) return;
 
+  // Check first card
+  if (this === firstCard) return;  
 
-// Prevent clicks if board locked
-if (lockBoard) return;
-// Prevent selecting same first card twice
-if (this === firstCard) return;
+  // Add flip class
+  this.classList.add('flip');
+  console.log("Added flip class");
 
-// Match Logic
+  // Set first card
+  if (!hasFlippedCard) {
+    hasFlippedCard = true;
+    firstCard = this;
+    return;
+  }
 
-// Flip card visibility
-this.classList.add('flip');
+  // Check match
+  checkForMatch(this);
 
-// Add animation class
-this.classList.add('flip-animation'); 
-
-// First clicked card
-if (!hasFlippedCard) {
-hasFlippedCard = true;
-firstCard = this;
-
-
-// Exit function
-return;
 }
 
+// Check match
+function checkForMatch(secondCard) {
 
-// Assign second clicked card
-secondCard = this;
-// Check if cards match
-checkForMatch();
+  let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
+
+  if (isMatch) {
+    disableCards();
+  } else {  
+    unflipCards();
+  }
+
 }
 
-// Card object
-const card = {
-  name: 'card1',
-  flipped: false
-};
-
-// Flip card
-card.flipped = true; 
-
-// Unflip
-card.flipped = false;
-
-
-// Compare cards data attribute
-// Trigger match or no match functions
-function checkForMatch() {
-let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
-
- //match found
-  if (firstCard.dataset.framework === secondCard.dataset.framework) {
-      console.log('matched')
-
-
-// If match found
-isMatch ? disableCards() : unflipCards();
-}
-firstCard.flipped = false;
-secondCard.flipped = false; 
-
-
-
-// Disable matched cards
-// Increment score
-if (currentPlayer === player1) {
-  player1.score++;
-} else {
-  player2.score++; 
-}
-
-// Update DOM
-player1ScoreElement.textContent = player1.score;
-player2ScoreElement.textContent = player2.score;
-
-// Reset board
+// Handle match
 function disableCards() {
 
+  // Increment score  
+  if (currentPlayer === player1) {
+    player1.score++;
+  } else {
+    player2.score++;
+  }
 
-firstCard.removeEventListener('click', flipCard);
-secondCard.removeEventListener('click', flipCard);
+  // Update DOM
+  player1ScoreElement.textContent = player1.score;
+  player2ScoreElement.textContent = player2.score;
+  
+  // Reset board
+  resetBoard();
 
-
-resetBoard();
 }
 
-
-// Unflip mismatched cards
-// Lock board temporarily
+// Unflip cards
 function unflipCards() {
 
+  // Lock board
+  lockBoard = true;
 
-// Lock board
-lockBoard = true;
-// Timer to unflip
-setTimeout(() => {
-firstCard.classList.remove('flip');
-secondCard.classList.remove('flip');
+  setTimeout(() => {
+    firstCard.classList.remove('flip');
+    secondCard.classList.remove('flip');
+    
+    resetBoard();
 
+  }, 1500);
 
-// Reset variables
-resetBoard();
-
-
-}, 1500);
 }
 
-
-// Reset state
+// Reset board
 function resetBoard() {
-hasFlippedCard = false;
-lockBoard = false;
-
-
-firstCard = null;
-secondCard = null;
+  hasFlippedCard = false;
+  lockBoard = false;
+  firstCard = null;
 }
 
-//Game logic
-
-//switch player logic
-function switchPlayer(){
-  currentPlayer = (currentPlayer === player1) ? player2: player1
-  const saying = getRandomPrompt(currentPlayer.name);
-  currentPlayerPrompt.textContent = saying; 
-} 
-
-
-// Shuffle card order randomly
-(function shuffle() {
-cards.forEach(card => {
-let randomPos = Math.floor(Math.random() * 12);
-card.style.order = randomPos;
-});
-})();
-
-
-// Attach flip handler to each card
+// Attach event listener
 cards.forEach(card => card.addEventListener('click', flipCard));
-}
 
-// Restart Game
+// Restart game
 function restartGame() {
-  initCards();
+  // Reset logic
 }
