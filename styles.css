@@ -1,6 +1,5 @@
 /* Position instructions column */
-.instructions {
-  position: absolute; 
+.instructions { 
   left: 0;
   top: 0;
   width: 200px;
@@ -22,6 +21,7 @@ header h3 {
 
 /* Page layout and styling */
 body {
+  overflow-y: scroll; 
   height: 100vh;
   display: flex;
   flex-direction: column; 
@@ -53,17 +53,33 @@ header h2 {
 }
 
 /* Space between header and game */
+
+.memory-game,
+.scores {
+  display: flex;
+}
+
+/* Scroll bar*/
+.scrollbar {
+  overflow-y: scroll; 
+  max-height: 500px;
+}
+
 .memory-game {
+
   width: 640px;
-  height: 640px;
+  height: 640px; 
   margin-top: 20px;
   
-  /* Layout game cards */
   display: flex;
-  flex-wrap: wrap;  
-  
-  /* 3D effects */
+  flex-wrap: wrap;
+
   perspective: 1000px;
+
+  overflow-y: scroll;
+  max-height: 500px;
+  min-height: 0px;
+
 }
 
 /* Score text styling */

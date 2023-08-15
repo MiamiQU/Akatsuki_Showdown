@@ -18,6 +18,14 @@ console.log("Created player objects");
 let currentPlayer = player1;
 console.log("Starting player is Player 1");
 
+let playerTurn = 1; // start with player 1
+
+// After each turn, switch players
+function switchPlayer() {
+  playerTurn = playerTurn === 1 ? 2 : 1; 
+}
+
+
 // DOM elements for score and prompt
 const player1ScoreElement = document.getElementById('player1-score');
 const player2ScoreElement = document.getElementById('player2-score');
@@ -35,7 +43,19 @@ let hasFlippedCard = false;
 
 // Handle card click
 function flipCard() {
+  // Pseudocode
+  // - Check current player
+  // - Update UI
 
+  // Get current player
+  const currentPlayer = getCurrentPlayer();
+
+  // Log player
+  console.log("Current player: ", currentPlayer);
+
+  // Update UI
+  updatePlayerUI(currentPlayer);
+  
   // Flip card
   this.flipped = true;
   console.log("Flipped card");
@@ -83,6 +103,7 @@ function disableCards() {
     player1.score++;
   } else {
     player2.score++;
+    switchPlayer();
   }
 
   // Update DOM
@@ -107,7 +128,7 @@ function unflipCards() {
     resetBoard();
 
   }, 1500);
-
+  switchPlayer();
 }
 
 // Reset board
