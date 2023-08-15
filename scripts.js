@@ -50,6 +50,7 @@ if (lockBoard) return;
 // Prevent selecting same first card twice
 if (this === firstCard) return;
 
+// Match Logic
 
 // Flip card visibility
 this.classList.add('flip');
@@ -126,6 +127,15 @@ lockBoard = false;
 firstCard = null;
 secondCard = null;
 }
+
+//Game logic
+
+//switch player logic
+function switchPlayer(){
+  currentPlayer = (currentPlayer === player1) ? player2: player1
+  const saying = getRandomPrompt(currentPlayer.name);
+  currentPlayerPrompt.textContent = saying; 
+} 
 
 
 // Shuffle card order randomly
