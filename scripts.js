@@ -81,8 +81,6 @@ let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
   if (firstCard.dataset.framework === secondCard.dataset.framework) {
       console.log('matched')
 
-      // Update score
-        currentPlayer.score += 1
 
 // If match found
 isMatch ? disableCards() : unflipCards();
