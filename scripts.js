@@ -77,6 +77,10 @@ checkForMatch();
 function checkForMatch() {
 let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
 
+ //match found
+  if (firstCard.dataset.framework === secondCard.dataset.framework) {
+      console.log('matched')
+
 
 // If match found
 isMatch ? disableCards() : unflipCards();
