@@ -155,3 +155,4 @@ card.style.order = randomPos;
 
 // Attach flip handler to each card
 cards.forEach(card => card.addEventListener('click', flipCard));
+}
