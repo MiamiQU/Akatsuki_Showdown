@@ -101,6 +101,40 @@ header h2 {
   box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
 }
 
+/* Keyframe animation */
+@keyframes flip-animation {
+
+  /* Start at normal rotation */
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  /* Rotate halfway through */ 
+  50% {
+    transform: rotateY(180deg);
+  }
+
+  /* Return to start rotation */
+  100% {
+    transform: rotateY(0deg);
+  }
+
+}
+
+/* Apply animation to element */
+.flip-animation {
+
+  /* Use the defined animation */
+  animation-name: flip-animation;
+  
+  /* Smooth easing function */
+  animation-timing-function: ease; 
+  
+  /* Only animate once */
+  animation-iteration-count: 1;
+
+}
+
 /* Scale on hover */
 .memory-card:hover {
   transform: scale(0.97);
