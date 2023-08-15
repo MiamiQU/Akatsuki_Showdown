@@ -43,6 +43,8 @@ let firstCard, secondCard;
 // Handle card click
 // Add flip class, track selected card
 function flipCard() {
+  // Flip card
+  this.flipped = true;
 
 
 // Prevent clicks if board locked
@@ -75,6 +77,18 @@ secondCard = this;
 checkForMatch();
 }
 
+// Card object
+const card = {
+  name: 'card1',
+  flipped: false
+};
+
+// Flip card
+card.flipped = true; 
+
+// Unflip
+card.flipped = false;
+
 
 // Compare cards data attribute
 // Trigger match or no match functions
@@ -89,6 +103,9 @@ let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
 // If match found
 isMatch ? disableCards() : unflipCards();
 }
+firstCard.flipped = false;
+secondCard.flipped = false; 
+
 
 
 // Disable matched cards
@@ -167,4 +184,9 @@ card.style.order = randomPos;
 
 // Attach flip handler to each card
 cards.forEach(card => card.addEventListener('click', flipCard));
+}
+
+// Restart Game
+function restartGame() {
+  initCards();
 }
