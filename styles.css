@@ -144,6 +144,7 @@ header h2 {
 /* Flip animation */
 .memory-card.flip {
   transform: rotateY(180deg); 
+  transform-origin: center center; /*add this*/ 
 }
 
 /* Card faces layout */ 

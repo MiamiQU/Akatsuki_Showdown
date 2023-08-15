@@ -54,6 +54,10 @@ if (this === firstCard) return;
 
 // Flip card visibility
 this.classList.add('flip');
+
+// Add animation class
+this.classList.add('flip-animation'); 
+
 // First clicked card
 if (!hasFlippedCard) {
 hasFlippedCard = true;
@@ -89,6 +93,16 @@ isMatch ? disableCards() : unflipCards();
 
 // Disable matched cards
 // Increment score
+if (currentPlayer === player1) {
+  player1.score++;
+} else {
+  player2.score++; 
+}
+
+// Update DOM
+player1ScoreElement.textContent = player1.score;
+player2ScoreElement.textContent = player2.score;
+
 // Reset board
 function disableCards() {
 
