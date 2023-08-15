@@ -15,6 +15,10 @@ const player2 = {
 //default player turn on game start
 let currentPlayer = player1
 
+//Dom references for score and prompt
+const player1ScoreElement = document.getElementById('player1-score')
+const player2ScoreElement = document.getElementById('player2-score')
+const currentPlayerPrompt = document.getElementById('player-prompt')
 
 
 // First clicked card
