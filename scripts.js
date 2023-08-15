@@ -1,10 +1,20 @@
 // Select all cards
 const cards = document.querySelectorAll('.memory-card');
 
+//Variables
+const player1 = {
+  score: 0,
+  name: 'Player 1'
+}
 
-// Player scores
-let score1 = 0;
-let score2 = 0;
+const player2 = {
+  score: 0,
+  name: 'Player 2'
+}
+
+//default player turn on game start
+let currentPlayer = player1
+
 
 
 // First clicked card
